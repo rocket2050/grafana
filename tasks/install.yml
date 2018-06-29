@@ -1,0 +1,40 @@
+---
+#Updating sources.list
+  
+  - name: APT Repository
+    apt_repository:
+      repo: deb https://packagecloud.io/grafana/stable/debian/ stretch main
+      state: present
+
+#Adding Package Cloud key. This will allow to install signed packages.
+  - name: Add Apt signing key
+    apt_key:
+      url: https://packagecloud.io/gpg.key
+      state: present
+
+#Updating APT Repository
+  - name: apt-get update
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+#Installing dependencies
+  - name: Install dependencies
+    apt: 
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - fonts-dejavu-core      
+      - fontconfig-config
+      - libfontconfig1
+
+  - name: Install Grafana
+    apt:
+      name: grafana
+      state: latest
+      force: yes
+
+  - name: Start grafana service
+    service:
+      name: grafana-server
+      state: restarted
