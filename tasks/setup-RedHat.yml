@@ -42,6 +42,13 @@
     owner: grafana
     group: grafana
 
+- name: Adding Conf to enable dashboards
+  template:
+    src: all.yml.j2
+    dest: /etc/grafana/provisioning/dashboards/
+    owner: grafana
+    group: grafana
+    
 - name: Start Grafana Server
   systemd:
     state: restarted
