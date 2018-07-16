@@ -34,6 +34,23 @@
       state: latest
       force: yes
 
+  - name: Create grafana Dashboard directory
+    file:
+      path: /var/lib/grafana/dashboards
+      state: directory
+      mode: 0755
+
+  - name: Add Dashboard to grafana
+    file:
+      src: {{ item }}
+      dest: /var/lib/grafana/dashboards/
+    with_items:
+      - mongodb.json
+      - mysql.json
+      - node-exporter.json
+      - prometheus-redis.json
+      - tomcat.json
+
   - name: Start grafana service
     service:
       name: grafana-server

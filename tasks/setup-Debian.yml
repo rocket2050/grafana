@@ -24,6 +24,23 @@
   apt: name=apt-transport-https state=present
   become: true
 
+- name: Create grafana Dashboard directory
+  file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+    mode: 0755
+    
+- name: Add Dashboard to grafana
+  file:
+    src: {{ item }}
+    dest: /var/lib/grafana/dashboards/
+  with_items:
+    - mongodb.json
+    - mysql.json
+    - node-exporter.json
+    - prometheus-redis.json
+    - tomcat.json
+
 - name: start Grafana Service
   service: name=grafana-server state=started enabled=yes
   become: true
