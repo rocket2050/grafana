@@ -65,7 +65,7 @@
   - name: Adding Conf to enable dashboards
     template:
       src: all.yml.j2
-      dest: /etc/grafana/provisioning/dashboards/
+      dest: /etc/grafana/provisioning/dashboards/all.yml
       owner: grafana
       group: grafana
 
