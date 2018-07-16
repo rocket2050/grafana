@@ -28,12 +28,16 @@
   file:
     path: /var/lib/grafana/dashboards
     state: directory
+    owner: grafana
+    group: grafana
     mode: 0755
-    
+
 - name: Add Dashboard to grafana
   file:
     src: {{ item }}
     dest: /var/lib/grafana/dashboards/
+    owner: grafana
+    group: grafana
   with_items:
     - mongodb.json
     - mysql.json
@@ -48,6 +52,3 @@
 - name: update the Grafana service
   shell: "update-rc.d grafana-server defaults"
   become: true
-
-
-
