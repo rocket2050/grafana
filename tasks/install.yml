@@ -1,6 +1,6 @@
 ---
 #Updating sources.list
-  
+
   - name: APT Repository
     apt_repository:
       repo: deb https://packagecloud.io/grafana/stable/debian/ stretch main
@@ -20,11 +20,11 @@
 
 #Installing dependencies
   - name: Install dependencies
-    apt: 
+    apt:
       name: "{{ item }}"
       state: present
     with_items:
-      - fonts-dejavu-core      
+      - fonts-dejavu-core
       - fontconfig-config
       - libfontconfig1
 
@@ -42,7 +42,7 @@
 
   - name: Add Dashboard to grafana
     file:
-      src: {{ item }}
+      src: "{{ item }}"
       dest: /var/lib/grafana/dashboards/
     with_items:
       - mongodb.json
