@@ -33,7 +33,7 @@
     mode: 0755
 
 - name: Add Dashboard to grafana
-  file:
+  copy:
     src: {{ item }}
     dest: /var/lib/grafana/dashboards/
     owner: grafana
@@ -46,7 +46,7 @@
     - tomcat.json
 
 - name: Add Grafana Configuration File
-  file:
+  copy:
     src: grafana.ini
     dest: /etc/grafana/
     owner: grafana
