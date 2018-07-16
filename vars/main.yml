@@ -1,2 +1,3 @@
 ---
 # vars file for DO_grafana
+datasource_name: "prometheus"
