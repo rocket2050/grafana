@@ -55,6 +55,13 @@
       - prometheus-redis.json
       - tomcat.json
 
+  - name: Add Grafana Configuration File
+    copy:
+      src: grafana.ini
+      dest: /etc/grafana/
+      owner: grafana
+      group: grafana
+
   - name: Start grafana service
     service:
       name: grafana-server
