@@ -35,7 +35,7 @@
       force: yes
 
   - name: Create grafana Dashboard directory
-    copy:
+    file:
       path: /var/lib/grafana/dashboards
       state: directory
       owner: grafana
