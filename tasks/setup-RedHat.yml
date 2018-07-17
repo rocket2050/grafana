@@ -36,6 +36,7 @@
     - node-exporter.json
     - prometheus-redis.json
     - tomcat.json
+    - apache.json
 
 - name: Add Grafana Configuration File
   copy:
