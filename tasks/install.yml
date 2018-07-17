@@ -63,9 +63,16 @@
       group: grafana
 
   - name: Adding Conf to enable dashboards
+    copy:
+      src: all.yml
+      dest: /etc/grafana/provisioning/dashboards/
+      owner: grafana
+      group: grafana
+
+  - name: Adding Datasource to Prometheus
     template:
       src: all.yml.j2
-      dest: /etc/grafana/provisioning/dashboards/all.yml
+      dest: /etc/grafana/provisioning/datasources/all.yml
       owner: grafana
       group: grafana
 

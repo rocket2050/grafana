@@ -1,6 +1,9 @@
-- name: 'default'
+datasources:
+- name: '{{ datasource_name }}'
+  type: 'prometheus'
+  access: 'direct'
   org_id: 1
-  folder: ''
-  type: 'file'
-  options:
-    folder: '/var/lib/grafana/dashboards'
+  url: '{{ datasource_url }}'
+  is_default: true
+  version: 1
+  editable: true

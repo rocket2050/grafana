@@ -1,3 +1,4 @@
 ---
 # vars file for DO_grafana
-datasource_name: "prometheus"
+datasource_name: "prometheus.internal-odmont.com"
+datasource_url: "http://prometheus:9090"
