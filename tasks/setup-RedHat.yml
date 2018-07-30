@@ -37,6 +37,7 @@
     - prometheus-redis.json
     - tomcat.json
     - apache.json
+    - elasticsearch.json
 
 - name: Add Grafana Configuration File
   copy:
